@@ -1,27 +1,27 @@
+let lsfCardsList = [];
 function createCard () {
-	let frenchWord = prompt('French word :');
-	let dexterPos = prompt('Dominant hand initial position:');
-	let sinisterPos = prompt('Secondary hand initial position:');
-	let dexterBeha = prompt('Dominant hand behavior:');
-	let sinisterBeha = prompt('Secondary hand behavior:');
+	const createdCard = {};
+	createdCard.frenchWord = prompt('French word :');
+	createdCard.dexterPos = prompt('Dominant hand initial position:');
+	createdCard.sinisterPos = prompt('Secondary hand initial position:');
+	createdCard.dexterBeha = prompt('Dominant hand behavior:');
+	createdCard.sinisterBeha = prompt('Secondary hand behavior:');
+	lsfCardsList.push(Object.values(createdCard));		 
 }
 
-
-/*let lsfSign = '{"lsfSign" : [' +
-'{"frenchWord":"Signer", "dexterPos":"Griffe", "sinisterPos":"Griffe", "dexterBeha":"blup", "sinisterBeha":blup"},' +
-'{"frenchWord":"Aimer", "dexterPos":"Moufle", "sinisterPos":"NA", "dexterBeha":"Donne son coeur", "sinisterBeha":blup"}]}';
-
-const obj = JSON.parse(lsfSign);
-document.getElementById("dictionnary").innerHTML =obj.lsfSign[1].frenchWord + " " + obj.lsfSign[2].frenchWord;
-*/
 
 document.addEventListener('DOMContentLoaded', function () {
 	const createCardBtn = document.getElementById('new-card-button');
 	createCardBtn.addEventListener('click', function() {
 		createCard ();
+		//document.getElementById("french-word").innerHTML = lsfCardsList[createdCard]
+	})
+	const displayListBtn = document.getElementById('display-list-button');
+	displayListBtn.addEventListener('click', function() {
+		displayList ();
 	})
 })
 
-/*document.querySelector('new-card-button').addEventListener('click', (event) => {
-	createCard ();
-})*/
+function displayList () {
+	document.getElementById("dictionnary").innerHTML = lsfCardsList;
+}
